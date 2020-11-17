@@ -12,6 +12,8 @@ import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -87,6 +89,9 @@ public class PlayerFrame extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         quitBtn = new javax.swing.JLabel();
         settingsBtn = new javax.swing.JLabel();
+        lyricsBtn = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        musicVideoBtn = new javax.swing.JLabel();
         songNameMainPanel = new javax.swing.JPanel();
         songNameSubPanel = new javax.swing.JPanel();
         songNameDisplay = new javax.swing.JLabel();
@@ -146,6 +151,30 @@ public class PlayerFrame extends javax.swing.JFrame {
             }
         });
 
+        lyricsBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lyricsBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vibes/pk/images/lyricsBtn.png"))); // NOI18N
+        lyricsBtn.setMaximumSize(new java.awt.Dimension(120, 120));
+        lyricsBtn.setMinimumSize(new java.awt.Dimension(120, 120));
+        lyricsBtn.setPreferredSize(new java.awt.Dimension(120, 120));
+        lyricsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lyricsBtnMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setText("jLabel1");
+
+        musicVideoBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        musicVideoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vibes/pk/images/musicVideoBtn.png"))); // NOI18N
+        musicVideoBtn.setMaximumSize(new java.awt.Dimension(120, 120));
+        musicVideoBtn.setMinimumSize(new java.awt.Dimension(120, 120));
+        musicVideoBtn.setPreferredSize(new java.awt.Dimension(120, 120));
+        musicVideoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                musicVideoBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
@@ -153,7 +182,13 @@ public class PlayerFrame extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
+                .addGap(401, 401, 401)
+                .addComponent(jLabel1)
+                .addGap(2, 2, 2)
+                .addComponent(musicVideoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lyricsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(settingsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(quitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,9 +196,19 @@ public class PlayerFrame extends javax.swing.JFrame {
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
             .addComponent(quitBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(settingsBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(musicVideoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lyricsBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         songNameMainPanel.setBackground(new java.awt.Color(0, 0, 0));
@@ -388,9 +433,7 @@ public class PlayerFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -484,6 +527,37 @@ public class PlayerFrame extends javax.swing.JFrame {
         volumeUpControl(0.1);
     }//GEN-LAST:event_volumeUpBtnMouseClicked
 
+    private void lyricsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lyricsBtnMouseClicked
+        // TODO add your handling code here:
+        String name = songFile.getName();
+        String songName = name.replace(" ", "+").replace(".mp3", "") + "+lyrics";
+        
+        try {
+            String url;
+            url = "https://www.google.com/search?q=";
+
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url + songName));
+        } catch (IOException ex) {
+            Logger.getLogger(PlayerFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lyricsBtnMouseClicked
+
+    private void musicVideoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_musicVideoBtnMouseClicked
+        // TODO add your handling code here:
+                String name = songFile.getName();
+        String songName = name.replace(" ", "+").replace(".mp3", "") + "+music+video";
+        
+        try {
+            String url;
+            url = "https://www.google.com/search?q=";
+
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url + songName));
+        } catch (IOException ex) {
+            Logger.getLogger(PlayerFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_musicVideoBtnMouseClicked
+
+        
     
     public static void main(String args[])throws UnsupportedTagException, InvalidDataException, IOException, NotSupportedException {
         // Set the Nimbus look and feel 
@@ -523,9 +597,12 @@ public class PlayerFrame extends javax.swing.JFrame {
     private javax.swing.JPanel controlPanel;
     private javax.swing.JPanel controlSubPannel;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lyricsBtn;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel musicVideoBtn;
     private javax.swing.JLabel muteBtn;
     private javax.swing.JLabel openBtn;
     private javax.swing.JLabel pauseBtn;
