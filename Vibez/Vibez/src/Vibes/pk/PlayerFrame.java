@@ -92,6 +92,8 @@ public class PlayerFrame extends javax.swing.JFrame {
         lyricsBtn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         musicVideoBtn = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         songNameMainPanel = new javax.swing.JPanel();
         songNameSubPanel = new javax.swing.JPanel();
         songNameDisplay = new javax.swing.JLabel();
@@ -175,6 +177,16 @@ public class PlayerFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vibes/pk/images/ArtistBtn.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
@@ -182,11 +194,15 @@ public class PlayerFrame extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(401, 401, 401)
-                .addComponent(jLabel1)
-                .addGap(2, 2, 2)
+                .addGap(420, 420, 420)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(107, 107, 107)
                 .addComponent(musicVideoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lyricsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(settingsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,16 +215,21 @@ public class PlayerFrame extends javax.swing.JFrame {
             .addComponent(quitBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(settingsBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(musicVideoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lyricsBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel1))
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lyricsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(musicVideoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         songNameMainPanel.setBackground(new java.awt.Color(0, 0, 0));
@@ -476,7 +497,12 @@ public class PlayerFrame extends javax.swing.JFrame {
 
     private void settingsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBtnMouseClicked
        
-        JOptionPane.showMessageDialog(this, "This will be where Menu Items are displayed such as get lyrics...");
+        JOptionPane.showMessageDialog(this, "To use Vibez, you must open up a mp3 file to start playing music. \n"
+                + "To do this press the choose button and this will pop up a window that allows you to navigate though your computer folders and pick the song you want. \n"
+                + "This button is located on the most left side of the main buttons. Now that you are playing music, you can pause, play, mute, decrease and increase sound just by clicking on the buttons. \n"
+                + "You can also minimize the Vibez window by double clicking on the Vibez logo which is on the top left corner. \n"
+                + "Vibez also offers the capability to find the lyrics, music video, and artist info of the son you are listenin to.\n"
+                + "To turn off Vibez, all you have to do is click the power button on the top right side.");
     }//GEN-LAST:event_settingsBtnMouseClicked
 
     private void openBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openBtnMouseClicked
@@ -498,13 +524,13 @@ public class PlayerFrame extends javax.swing.JFrame {
         if(evt.getClickCount() == 2){
             if(windowCollapsed == false){
                 windowCollapsed = true;
-                this.setSize(new Dimension(this.getSize().width, 50));
+                this.setSize(new Dimension(this.getSize().width, 72));
                 
                 Title.setFont(new Font("Nirmala UI", 0, 14));
                 Title.setText("Now Playing | " + songFile.getName());
             }else if(windowCollapsed == true){
                 windowCollapsed = false;
-                this.setSize(new Dimension(this.getSize().width, 300));
+                this.setSize(new Dimension(this.getSize().width, 318));
                 
                 Title.setFont(new Font("Nirmala UI", 0, 20));
                 Title.setText(appName);
@@ -557,6 +583,19 @@ public class PlayerFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_musicVideoBtnMouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+ String name = songFile.getName();
+        String songName = name.replace(" ", "+").replace(".mp3", "") + "+song+artist";
+        
+        try {
+            String url;
+            url = "https://www.google.com/search?q=";
+
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url + songName));
+        } catch (IOException ex) {
+            Logger.getLogger(PlayerFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }    }//GEN-LAST:event_jLabel3MouseClicked
+
         
     
     public static void main(String args[])throws UnsupportedTagException, InvalidDataException, IOException, NotSupportedException {
@@ -598,6 +637,8 @@ public class PlayerFrame extends javax.swing.JFrame {
     private javax.swing.JPanel controlSubPannel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lyricsBtn;
